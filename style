@@ -1,0 +1,19 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $isValidEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Result</title>
+</head>
+<body>
+    <form method="post" action="form-handler.php">
+        <input aria-label="email" type="text" name="email" id="emailInput" class="t-input js-tilda-rule t-input_bbonly t-input-inline-styles t-input_pvis t-input_has-content" data-tilda-rule="email" data-tilda-req="1" style="background-color: transparent; font-size: 16px; font-weight: 400; height: 50px;" required>
+        <div id="errorMessage" style="color: red; display: <?php echo $isValidEmail ? 'none' : 'block'; ?>">Invalid email format</div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
